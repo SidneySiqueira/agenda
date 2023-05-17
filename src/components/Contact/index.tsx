@@ -55,7 +55,7 @@ const Contact = ({ contacts, setShowContact, setShowModal }: Props) => {
                 <S.ContainerNumber>
                     <S.BoxNumber>
                         <S.Text>Numero</S.Text>
-                        <S.Number>{`${formatDDD((selectContact as FormData).DDD)} ${formatPhoneNumber((selectContact as FormData).number)}`}</S.Number>
+                        <S.Number>{`(${(selectContact as FormData).DDD.replace(/\(|\)/g, '')}) ${formatPhoneNumber((selectContact as FormData).number)}`}</S.Number>
                     </S.BoxNumber>
                     <S.LogoPhone src={'telefone.png'} alt='telefone' />
                 </S.ContainerNumber> 

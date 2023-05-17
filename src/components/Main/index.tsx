@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchApi } from '@/Redux/apiSlice';
 import { ContactState, setSelectedContact } from '@/Redux/selectedContactSlice';
 import Order from '@/utills/alphabeticalOrder';
-import formatDDD from '@/utills/formatedDDD';
+// import formatDDD from '@/utills/formatedDDD';
 import formatPhoneNumber from '@/utills/formatedNumber';
 import { FormData } from '@/utills/type';
 
@@ -94,7 +94,7 @@ const Main = ({ loading, setLoading }: Props) => {
                     <S.Letter>{contact.name?.substring(0, 1)}</S.Letter>
                     <S.Text>{contact.name}</S.Text>
                 </S.BoxName>
-                {!isMobile && <S.Text>{`${formatDDD((contact as unknown as FormData).DDD)} ${formatPhoneNumber((contact as unknown as FormData).number)}`}</S.Text>}
+                {!isMobile && <S.Text>{`(${(contact as unknown as FormData).DDD.replace(/\(|\)/g, '')}) ${formatPhoneNumber((contact as unknown as FormData).number)}`}</S.Text>}
             </S.ContactLine>
         );
     };
