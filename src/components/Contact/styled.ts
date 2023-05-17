@@ -231,6 +231,22 @@ export const Number = styled.h2`
   background: transparent;
 `;
 
+export const Email = styled.h2`
+  width: 100%;
+  margin: 0.625rem;
+  padding-left: 0.625rem;
+
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  background: transparent;
+  
+  @media (max-width: 768px) {
+    width: 90%;
+    overflow-wrap: break-word;
+  }
+`;
+
 export const LogoPhoto = styled.img`
   width: 70%;
 

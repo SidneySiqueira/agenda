@@ -9,8 +9,8 @@ interface Api {
 }
 
 interface Props {
-  item: string,
-  patchData: ContactState
+  item: string;
+  patchData: ContactState;
 }
 
 const initialState: Api = {
@@ -19,27 +19,39 @@ const initialState: Api = {
   error: null,
 };
 
-const url = "https://agenda-bf681-default-rtdb.firebaseio.com/"
+const url = "https://agenda-bf681-default-rtdb.firebaseio.com/";
 
 export const fetchApi = createAsyncThunk("api/fetch", async () => {
-  const response = await axios.get(`${url}/numbers.json`);    
+  const response = await axios.get(`${url}/numbers.json`);
   return response.data;
 });
 
-export const AddApi = createAsyncThunk("api/post", async (postData: ContactState) => { 
-  const response = await axios.post(`${url}/numbers.json`, postData);      
-  return response.data;
-});
+export const AddApi = createAsyncThunk(
+  "api/post",
+  async (postData: ContactState) => {
+    const response = await axios.post(`${url}/numbers.json`, postData);
+    return response.data;
+  }
+);
 
-export const updateApi = createAsyncThunk("api/update", async ({ item, patchData }:Props, {}) => { 
-  const response = await axios.patch(`${url}/numbers/${item}.json`, patchData);  
-  return response.data;
-});
+export const updateApi = createAsyncThunk(
+  "api/update",
+  async ({ item, patchData }: Props, {}) => {
+    const response = await axios.patch(
+      `${url}/numbers/${item}.json`,
+      patchData
+    );
+    return response.data;
+  }
+);
 
-export const deleteApi = createAsyncThunk("api/delete", async (itemId: string) => {
-  const response = await axios.delete(`${url}/numbers/${itemId}.json`);        
-  return itemId;
-});
+export const deleteApi = createAsyncThunk(
+  "api/delete",
+  async (itemId: string) => {
+    await axios.delete(`${url}/numbers/${itemId}.json`);
+    return itemId;
+  }
+);
 
 const apiSlice = createSlice({
   name: "api",
@@ -75,7 +87,9 @@ const apiSlice = createSlice({
       .addCase(updateApi.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.contacts = Object.values(action.payload);
-        const index = state.contacts.findIndex((contact) => (contact as ContactState).id === action.payload.id);
+        const index = state.contacts.findIndex(
+          (contact) => (contact as ContactState).id === action.payload.id
+        );
         state.contacts[index] = action.payload;
       })
       .addCase(updateApi.rejected, (state, action) => {
@@ -85,12 +99,15 @@ const apiSlice = createSlice({
       .addCase(deleteApi.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(deleteApi.fulfilled, (state, action) => {        
+      .addCase(deleteApi.fulfilled, (state, action) => {
         state.status = "succeeded";
         const contactsArray = Object.values(action.payload);
         if (Array.isArray(state.contacts)) {
           state.contacts = state.contacts.filter((contact) => {
-            return !contactsArray.some((deletedContacts) => (deletedContacts as unknown as ContactState).id === contact.id);
+            return !contactsArray.some(
+              (deletedContacts) =>
+                (deletedContacts as unknown as ContactState).id === contact.id
+            );
           });
         }
       })

@@ -7,7 +7,7 @@ interface Props {
   handleInputChange: (value: string) => void;
 }
 
-const Dropdown = ({ group, handleInputChange }: Props) => {
+const Dropdown = ({ handleInputChange }: Props) => {
   const handleOptionChange = (option: Option) => {
     handleInputChange(option.value);
   };
@@ -30,8 +30,8 @@ const Dropdown = ({ group, handleInputChange }: Props) => {
 
   return (
     <S.Box>
-      <S.BoxSelect value={group} onChange={handleSelectChange}>
-        <S.BoxDropdown value="">Selecione uma opção de grupo</S.BoxDropdown>
+      <S.BoxSelect onChange={handleSelectChange}>
+        <S.BoxDropdown>Selecione uma opção de grupo</S.BoxDropdown>
         {renderOptions()}
       </S.BoxSelect>
     </S.Box>

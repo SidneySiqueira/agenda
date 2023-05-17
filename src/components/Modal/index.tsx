@@ -9,7 +9,6 @@ import Dropdown from '../Dropdown';
 import * as S from "./styled";
 import formatPhoneNumber from '@/utills/formatedNumber';
 import formatDDD from '@/utills/formatedDDD';
-import { log } from 'console';
 import { ContactState } from '@/Redux/selectedContactSlice';
 import { FormData } from '@/utills/type';
 

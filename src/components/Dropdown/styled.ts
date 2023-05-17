@@ -8,7 +8,7 @@ export const Box = styled.div`
 `;
 
 export const BoxSelect = styled.select`
-  width: 100%;
+  width: 70%;
   min-height: 1.875rem;
 
   border: 0.063rem solid white;
@@ -16,6 +16,10 @@ export const BoxSelect = styled.select`
   
   color: white;
   background: gray;
+
+  @media (min-width: 768px) {
+    width: 50%;
+  }
 `;
 
 export const BoxDropdown = styled.option`

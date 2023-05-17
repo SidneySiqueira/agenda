@@ -9,6 +9,5 @@ export default function Icons (group: string) {
         case "Amigos": return <GroupIcon fontSize="large" style={{background: 'transparent'}}/>;
         case "Trabalho": return <WorkIcon fontSize="large" style={{background: 'transparent'}}/>;
         default: return <NoAccountsIcon fontSize="large" style={{background: 'transparent'}}/>;
-            break;
     }
 }

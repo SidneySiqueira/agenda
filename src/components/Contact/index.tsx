@@ -63,7 +63,7 @@ const Contact = ({ contacts, setShowContact, setShowModal }: Props) => {
                     <S.ContainerEmail>
                     <S.BoxNumber>
                         <S.Text>E-mail</S.Text>
-                        <S.Number>{(selectContact as FormData).email}</S.Number>
+                        <S.Email>{(selectContact as FormData).email}</S.Email>
                     </S.BoxNumber>
                 </S.ContainerEmail>}
                 <S.BoxButton>
